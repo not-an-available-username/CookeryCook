@@ -214,6 +214,68 @@ body {
   pointer-events: none;
 }
 
+/* AUTOCOMPLETE DROPDOWN */
+.suggestions {
+  position: absolute;
+  top: 82px;              /* appears under search bar image */
+  left: 0;
+  width: 300px;
+  background: white;
+  border-radius: 8px;
+  list-style: none;
+  padding: 5px 0;
+  margin: 0;
+  display: none;
+  max-height: 150px;
+  overflow-y: auto;
+  font-size: 18px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  z-index: 10;
+}
+
+.suggestions li {
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background: #ffe6a7; 
+}
+
+.suggestions li.active {
+  background: #ffe6a7;  
+  font-weight: bold;
+}
+
+/* FRIDGE INGREDIENT GRID (4 per row) */
+#ingredientList {
+  position: absolute;
+  right: 590px;     /* ← change this to move entire grid horizontally */
+  top: 225px;      /* ← change this to move entire grid vertically */
+  
+  width: 70px;    /* ← you can adjust if PNGs are bigger/smaller */
+  
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* ← 4 items per row */
+  column-gap: 10px;                        /* space between items */
+  row-gap: 37px;
+  padding: 10px;
+}
+
+/* Ingredient item wrapper */
+.ingredient-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90px;   /* adjust based on your PNG sizes */
+}
+
+/* Ingredient PNG */
+.ingredient-item img {
+  width: 70px;   /* PNG size — change here */
+  height: auto;
+}
+
 .remove-ingredient {
   border: none;
   outline: none;
@@ -237,4 +299,44 @@ body {
 
 .remove-ingredient:active img {
   transform: scale(0.9);
+}
+
+/* Tooltip container */
+.ingredient-item {
+  position: relative;
+}
+
+/* Tooltip box */
+.ingredient-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.85);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  margin-bottom: 6px;
+}
+
+/* arrow */
+.ingredient-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0,0,0,0.85) transparent transparent transparent;
+}
+
+/* show tooltip */
+.ingredient-item:hover .ingredient-tooltip {
+  opacity: 1;
 }

@@ -9,10 +9,8 @@ window.gameAudio = {
   init() {
     this.theme.loop = true;
 
-    // Try autoplay immediately (works on desktop + GitHub Pages)
     this.theme.volume = 0.6;
     this.theme.play().catch(() => {
-      // If browser blocks autoplay, start after any interaction
       const resume = () => {
         this.theme.play();
         document.removeEventListener("pointerdown", resume);
@@ -20,24 +18,22 @@ window.gameAudio = {
       document.addEventListener("pointerdown", resume, { once: true });
     });
 
-    // Universal click sound
     document.addEventListener("click", () => {
       this.play("click");
     });
 
-    // Chicken sound
     document.addEventListener("click", (e) => {
       if (e.target.classList.contains("chicken")) {
         this.play("chicken");
       }
     });
 
-    // Remove-ingredient sound
     document.addEventListener("click", (e) => {
       if (e.target.closest(".remove-ingredient")) {
         this.play("remove");
       }
     });
+
   },
 
   play(name) {

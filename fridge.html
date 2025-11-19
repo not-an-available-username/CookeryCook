@@ -7,13 +7,22 @@
     <script defer src="js/audio.js"></script>
     <script defer src="js/fridge.js"></script>
   </head>
+
   <body class="fridge-screen">
     <div class="search-area">
       <div class="search-wrapper">
-        <input type="text" id="ingredientInput" />
+        <input
+          type="text"
+          id="ingredientInput"
+          placeholder="Type ingredient..."
+          autocomplete="off"
+        />
+
         <button id="searchBtn">
           <img src="assets/buttons/search_button.png" />
         </button>
+
+        <ul id="ingredientSuggestions" class="suggestions"></ul>
       </div>
     </div>
 
