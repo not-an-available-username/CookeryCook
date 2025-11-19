@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -9,19 +10,18 @@ html, body {
 
 /* SCREEN BACKGROUNDS */
 .start-screen {
-  background: url('../assets/backgrounds/start_screen.png') center/cover no-repeat;
+  background: url("../assets/backgrounds/start_screen.png") center/cover
+    no-repeat;
 }
 
 .fridge-screen {
-  background: url('../assets/backgrounds/fridge_screen.png') center/cover no-repeat;
-}
-
-.recipes-screen {
-  background: url('../assets/backgrounds/recipes_screen.png') center/cover no-repeat;
+  background: url("../assets/backgrounds/fridge_screen.png") center/cover
+    no-repeat;
 }
 
 .kitchen-screen {
-  background: url('../assets/backgrounds/kitchen_screen.png') center/cover no-repeat;
+  background: url("../assets/backgrounds/kitchen_screen.png") center/cover
+    no-repeat;
 }
 
 .start-screen,
@@ -32,7 +32,7 @@ html, body {
   top: 0;
   left: 0;
 
-  width: 1440px;      /* fixed game resolution */
+  width: 1440px; /* fixed game resolution */
   height: 765px;
 
   background-repeat: no-repeat;
@@ -42,11 +42,32 @@ html, body {
   overflow: hidden;
 }
 
+.bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 1440px; /* your fixed resolution */
+  height: 765px;
+
+  background: url("../assets/backgrounds/recipes_screen.png") top left no-repeat;
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: 1440px 765px;
+
+  transition: filter 1.2s ease;
+  z-index: -1; /* push behind everything */
+}
+
+.bg-layer.blurred {
+  filter: blur(10px);
+}
+
 .chicken {
   position: absolute;
-  top: 81px;          
-  right: 210px;       
-  width: 100px;     
+  top: 81px;
+  right: 210px;
+  width: 100px;
   cursor: pointer;
   transition: transform 0.25s ease;
 }
@@ -56,13 +77,12 @@ html, body {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.6); 
+  background: rgba(255, 255, 255, 0.6);
   pointer-events: none;
   z-index: 99999;
   transform: translate(-50%, -50%);
   animation: clickRippleAnim 0.7s ease-out forwards;
-  box-shadow:
-    0 0 12px rgba(255, 255, 255, 0.8),
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8),
     0 0 25px rgba(255, 255, 255, 0.6);
 }
 
@@ -119,9 +139,15 @@ html, body {
 
 /* Bounce animation */
 @keyframes btnBounce {
-  0%   { transform: scale(1.2); }
-  50%  { transform: scale(0.9); }
-  100% { transform: scale(1.15); }
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1.15);
+  }
 }
 
 /* ========= BUTTON POSITIONING ========= */
@@ -131,7 +157,6 @@ html, body {
   left: 44.75%;
   bottom: 150px;
   transform: translateX(-40%);
-  transform: scale(1.15);
 }
 
 .next-btn {
@@ -158,8 +183,8 @@ html, body {
 
 .bookmark.clicked {
   opacity: 0;
-  right: 95%;    
-  transform: translateX(-400px) rotate(-20deg); 
+  right: 95%;
+  transform: translateX(-400px) rotate(-20deg);
 }
 
 /* Smooth blur */
@@ -175,23 +200,23 @@ body {
 
 /* Wrap that holds everything and can be blurred smoothly */
 #screenWrap {
-  width: 100vw;
-  height: 100vh;
+  width: 1440px;
+  height: 765px;
   transition: filter 1s ease;
 }
 
 /* When blur is active */
 #screenWrap.screen-blur {
-  filter: blur(10px);
+  filter: blur(5px);
 }
 
 .search-wrapper {
   position: absolute;
   top: 190px;
   left: 265px;
-  width: 320px;        /* adjust to your PNG width */
-  height: 80px;        /* adjust to your PNG height */
-  background: url('../assets/buttons/search_bar.png') no-repeat center/contain;
+  width: 320px; /* adjust to your PNG width */
+  height: 80px; /* adjust to your PNG height */
+  background: url("../assets/buttons/search_bar.png") no-repeat center/contain;
 }
 
 #ingredientInput {
@@ -199,7 +224,7 @@ body {
   top: 50%;
   left: 20px;
   transform: translateY(-50%);
-  width: 220px;        /* adjust width inside the PNG */
+  width: 220px; /* adjust width inside the PNG */
   height: 40px;
   font-size: 20px;
   border: none;
@@ -213,7 +238,7 @@ body {
   left: 170px;
   top: 53%;
   transform: translateY(-50%);
-  width: 390px;     /* matches your PNG button size */
+  width: 390px; /* matches your PNG button size */
   height: auto;
   border: none;
   background: none;
@@ -230,7 +255,7 @@ body {
 /* AUTOCOMPLETE DROPDOWN */
 .suggestions {
   position: absolute;
-  top: 82px;              /* appears under search bar image */
+  top: 82px; /* appears under search bar image */
   left: 0;
   width: 300px;
   background: white;
@@ -242,7 +267,7 @@ body {
   max-height: 150px;
   overflow-y: auto;
   font-size: 18px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   z-index: 10;
 }
 
@@ -252,25 +277,25 @@ body {
 }
 
 .suggestions li:hover {
-  background: #ffe6a7; 
+  background: #ffe6a7;
 }
 
 .suggestions li.active {
-  background: #ffe6a7;  
+  background: #ffe6a7;
   font-weight: bold;
 }
 
 /* FRIDGE INGREDIENT GRID (4 per row) */
 #ingredientList {
   position: absolute;
-  right: 575px;     /* ← change this to move entire grid horizontally */
-  top: 240px;      /* ← change this to move entire grid vertically */
-  
-  width: 70px;    /* ← you can adjust if PNGs are bigger/smaller */
-  
+  right: 575px; /* ← change this to move entire grid horizontally */
+  top: 240px; /* ← change this to move entire grid vertically */
+
+  width: 70px; /* ← you can adjust if PNGs are bigger/smaller */
+
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* ← 4 items per row */
-  column-gap: 10px;                        /* space between items */
+  column-gap: 10px; /* space between items */
   row-gap: 35px;
   padding: 10px;
 }
@@ -280,12 +305,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90px;   /* adjust based on your PNG sizes */
+  width: 90px; /* adjust based on your PNG sizes */
 }
 
 /* Ingredient PNG */
 .ingredient-item img {
-  width: 70px;   /* PNG size — change here */
+  width: 70px; /* PNG size — change here */
   height: auto;
 }
 
@@ -325,7 +350,7 @@ body {
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0,0,0,0.85);
+  background: rgba(0, 0, 0, 0.85);
   color: white;
   padding: 4px 8px;
   border-radius: 6px;
@@ -346,7 +371,7 @@ body {
   transform: translateX(-50%);
   border-width: 5px;
   border-style: solid;
-  border-color: rgba(0,0,0,0.85) transparent transparent transparent;
+  border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
 }
 
 /* show tooltip */
