@@ -6,10 +6,14 @@
     <link rel="stylesheet" href="css/styles.css" />
     <script defer src="js/audio.js"></script>
     <script defer src="js/recipes.js"></script>
-    <link rel="preload" href="assets/backgrounds/recipes_screen0.png" as="image">
+    <link
+      rel="preload"
+      href="assets/backgrounds/recipes_screen0.png"
+      as="image"
+    />
   </head>
   <body class="recipes-screen">
-    <div class="bg-layer"></div> 
+    <div class="bg-layer"></div>
     <div id="screenWrap">
       <img src="assets/buttons/bookmark.png" id="bookmark" class="bookmark" />
 
@@ -24,6 +28,17 @@
       <button class="next-btn" onclick="location.href='kitchen.html'">
         <img src="assets/buttons/next_button.png" />
       </button>
+
+      <img
+        id="pageLeft"
+        class="page-arrow"
+        src="assets/buttons/left_page_changer.png"
+      />
+      <img
+        id="pageRight"
+        class="page-arrow"
+        src="assets/buttons/right_page_changer.png"
+      />
 
       <div id="clickEffect"></div>
     </div>

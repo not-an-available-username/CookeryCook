@@ -1,35 +1,114 @@
-const recipes = [
-  { name: "Recipe 1", desc: "A yummy dish..." },
-  { name: "Recipe 2", desc: "A second dish..." },
-  { name: "Recipe 3", desc: "Another one..." },
-  { name: "Recipe 4", desc: "More food..." },
-];
+const PER_PAGE = 3;
 
-const container = document.getElementById("recipesContainer");
-const descBox = document.getElementById("recipeDescription");
-const bookmark = document.getElementById("bookmark");
-let page = 0;
-
-function renderPage() {
-  container.innerHTML = "";
-  const start = page * 3;
-  recipes.slice(start, start + 3).forEach((r, i) => {
-    const b = document.createElement("button");
-    b.textContent = r.name;
-    b.onclick = () => showRecipe(r);
-    container.appendChild(b);
-  });
+// Convert recipe name → file-friendly id
+function recipeId(name) {
+  return name.toLowerCase().replace(/\s+/g, "_");
 }
 
-function showRecipe(r) {
-  descBox.innerHTML = `
-<h2>${r.name}</h2>
-<p>${r.desc}</p>
-<button onclick="location.href='kitchen.html'">Choose this recipe</button>
-`;
+// Load user ingredients from localStorage
+function loadUserIngredients() {
+  const raw = localStorage.getItem("fridgeIngredients");
+  if (!raw) return new Set();
+  try {
+    const arr = JSON.parse(raw);
+    return new Set(arr);
+  } catch {
+    return new Set();
+  }
 }
 
-const screenWrap = document.getElementById("screenWrap");
+// Check if ALL ingredients match
+function isFullMatch(recipe, userSet) {
+  return recipe.ingredients.every((i) => userSet.has(i));
+}
+
+// Count matching ingredients
+function countMatches(recipe, userSet) {
+  return recipe.ingredients.filter((i) => userSet.has(i)).length;
+}
+
+async function init() {
+  const container = document.getElementById("recipesContainer");
+  const fullImageBox = document.getElementById("recipeDescription");
+  const leftBtn = document.getElementById("pageLeft");
+  const rightBtn = document.getElementById("pageRight");
+
+  // Load recipe list from your JSON file
+  const res = await fetch("assets/data/recipes.json");
+  const recipes = await res.json();
+
+  // Load user ingredients
+  const user = loadUserIngredients();
+
+  // First find full matches
+  let matched = recipes.filter((r) => isFullMatch(r, user));
+
+  // If none → show partial matches sorted by most matches
+  if (matched.length === 0) {
+    matched = recipes
+      .map((r) => ({
+        recipe: r,
+        count: countMatches(r, user),
+      }))
+      .filter((o) => o.count > 0)
+      .sort((a, b) => b.count - a.count)
+      .map((o) => o.recipe);
+  }
+
+  let page = 0;
+
+  function renderPage() {
+    container.innerHTML = "";
+    fullImageBox.innerHTML = ""; // clear full recipe right side
+
+    const start = page * PER_PAGE;
+    const slice = matched.slice(start, start + PER_PAGE);
+
+    slice.forEach((recipe) => {
+      const id = recipeId(recipe.name);
+
+      const btn = document.createElement("button");
+      btn.style.cssText =
+        "background:none;border:none;padding:0;margin:0;cursor:pointer;";
+
+      const img = document.createElement("img");
+      img.src = `assets/recipes/${id}_preview.png`;
+      img.classList.add("recipe-preview");
+      btn.appendChild(img);
+
+      // Click → show full recipe image
+      btn.onclick = () => {
+        const full = document.createElement("img");
+        full.src = `assets/recipes/${id}_full_recipe.png`;
+        full.className = "full-recipe-image";
+
+        fullImageBox.innerHTML = "";
+        fullImageBox.appendChild(full);
+
+        if (window.gameAudio) gameAudio.play("click");
+      };
+
+      container.appendChild(btn);
+    });
+
+    const totalPages = Math.ceil(matched.length / PER_PAGE);
+    leftBtn.style.opacity = page > 0 ? 1 : 0.3;
+    rightBtn.style.opacity = page < totalPages - 1 ? 1 : 0.3;
+  }
+
+  leftBtn.onclick = () => {
+    if (page > 0) page--;
+    renderPage();
+  };
+
+  rightBtn.onclick = () => {
+    const totalPages = Math.ceil(matched.length / PER_PAGE);
+    if (page < totalPages - 1) page++;
+    renderPage();
+  };
+
+  renderPage();
+}
 
 bookmark.addEventListener("click", () => {
   // bookmark flies out
@@ -45,13 +124,13 @@ bookmark.addEventListener("click", () => {
   setTimeout(() => {
     const bg = document.querySelector(".bg-layer");
     bg.style.backgroundImage = "url('assets/backgrounds/recipes_screen0.png')";
-  }, 1200);
+  }, 800);
 
   // unblur smoothly
   setTimeout(() => {
     screenWrap.classList.remove("screen-blur");
     document.querySelector(".bg-layer").classList.remove("blurred");
-  }, 1700);
+  }, 1300);
 });
 
-renderPage();
+init();
