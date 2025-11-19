@@ -444,3 +444,27 @@ body {
   width: 410px;
   height: 520px;
 }
+
+.step-image {
+  position: absolute;
+  bottom: 6px;
+  left: 785px;
+  transform: translateX(-50%);
+  width: 1210px;
+  height: auto;
+}
+
+.step-next {
+  position: absolute;
+  bottom: 6px;
+  left: 1300px;
+  transform: translateX(-50%);
+  
+  /* adjust to match your PNG’s "Next" button location */
+  width: 100px;    
+  height: 50px;
+  
+  background: none;
+  border: none;
+  cursor: pointer;
+}

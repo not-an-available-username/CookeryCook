@@ -86,6 +86,8 @@ async function init() {
         fullImageBox.appendChild(full);
 
         if (window.gameAudio) gameAudio.play("click");
+
+        localStorage.setItem("currentRecipe", id);
       };
 
       container.appendChild(btn);
