@@ -5,7 +5,7 @@ const startBtn = document.getElementById('startBtn');
 chicken.addEventListener('click', () => {
 chicken.src = 'assets/interactives/screaming_chick.png';
 new Audio('assets/click.mp3').play();
-setTimeout(()=> chicken.src='assets/interactives/normal_chick.png', 100);
+setTimeout(()=> chicken.src='assets/interactives/normal_chick.png', 200);
 });
 
 

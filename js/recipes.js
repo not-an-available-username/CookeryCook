@@ -33,17 +33,27 @@ descBox.innerHTML = `
 }
 
 
+const screenWrap = document.getElementById("screenWrap");
+
 bookmark.addEventListener("click", () => {
+  // bookmark flies out
   bookmark.classList.add("clicked");
+
+  // blur screen AFTER bookmark leaves
   setTimeout(() => {
-    document.body.classList.add("screen-blur");
-  }, 600);
+    screenWrap.classList.add("screen-blur");
+  }, 500);
+
+  // change background while blurred
   setTimeout(() => {
-    document.body.style.backgroundImage = "url('assets/backgrounds/recipes_screen0.png')";
-  }, 1400);
+    document.body.style.backgroundImage =
+      "url('assets/backgrounds/recipes_screen0.png')";
+  }, 1200);
+
+  // unblur smoothly
   setTimeout(() => {
-    document.body.classList.remove("screen-blur");
-  }, 2200);
+    screenWrap.classList.remove("screen-blur");
+  }, 1900);
 });
 
 
