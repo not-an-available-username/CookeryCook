@@ -386,18 +386,20 @@ body {
 
 .page-arrow {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 60px;
+  top: 680px;   /* BELOW all 3 previews */
+  width: 120px;
   cursor: pointer;
   user-select: none;
+  transform: translateY(-50%);
 }
 
+/* Align horizontally under the preview column */
 #pageLeft {
-  left: 40px;
+  left: 360px;    /* slightly left of preview column */
 }
+
 #pageRight {
-  right: 40px;
+  left: 550px;    /* slightly right of preview column */
 }
 
 .recipes-list {
