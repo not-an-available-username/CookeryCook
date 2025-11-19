@@ -3,7 +3,7 @@ html, body {
   padding: 0;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   font-family: Arial;
 }
 
@@ -24,19 +24,32 @@ html, body {
   background: url('../assets/backgrounds/kitchen_screen.png') center/cover no-repeat;
 }
 
+.start-screen,
+.fridge-screen,
+.recipes-screen,
+.kitchen-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 1440px;      /* fixed game resolution */
+  height: 765px;
+
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: 1440px 765px; /* never scale */
+
+  overflow: hidden;
+}
+
 .chicken {
   position: absolute;
-  top: 55px;          
+  top: 81px;          
   right: 210px;       
   width: 100px;     
   cursor: pointer;
   transition: transform 0.25s ease;
 }
-
-.search-area { position:absolute; top:20px; left:20px; }
-.fridge-items { position:absolute; right:20px; top:100px; display:flex; flex-direction:column; gap:20px; }
-
-.bookmark { position:absolute; top:0; right:50px; width:80px; cursor:pointer; }
 
 .click-ripple {
   position: fixed;
@@ -116,7 +129,7 @@ html, body {
   padding: 0;
   position: absolute;
   left: 44.75%;
-  bottom: 120px;
+  bottom: 150px;
   transform: translateX(-40%);
   transform: scale(1.15);
 }
@@ -124,19 +137,19 @@ html, body {
 .next-btn {
   position: absolute;
   right: 1px;
-  bottom: 20px;
+  bottom: 40px;
 }
 
 .back-btn {
   position: absolute;
   left: 11px;
-  bottom: 20px;
+  bottom: 40px;
 }
 
 /* Bookmark animation when clicked */
 .bookmark {
   position: absolute;
-  top: 260px;
+  top: 280px;
   left: 141px;
   width: 180px;
   cursor: pointer;
@@ -174,8 +187,8 @@ body {
 
 .search-wrapper {
   position: absolute;
-  top: 150px;
-  left: 245px;
+  top: 190px;
+  left: 265px;
   width: 320px;        /* adjust to your PNG width */
   height: 80px;        /* adjust to your PNG height */
   background: url('../assets/buttons/search_bar.png') no-repeat center/contain;
@@ -250,15 +263,15 @@ body {
 /* FRIDGE INGREDIENT GRID (4 per row) */
 #ingredientList {
   position: absolute;
-  right: 590px;     /* ← change this to move entire grid horizontally */
-  top: 225px;      /* ← change this to move entire grid vertically */
+  right: 575px;     /* ← change this to move entire grid horizontally */
+  top: 240px;      /* ← change this to move entire grid vertically */
   
   width: 70px;    /* ← you can adjust if PNGs are bigger/smaller */
   
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* ← 4 items per row */
   column-gap: 10px;                        /* space between items */
-  row-gap: 37px;
+  row-gap: 35px;
   padding: 10px;
 }
 

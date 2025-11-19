@@ -30,3 +30,5 @@ document.addEventListener("click", (e) => {
     ripple.remove();
   }, 700);
 });
+
+
