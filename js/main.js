@@ -1,18 +1,19 @@
-const chicken = document.getElementById('chicken');
-const startBtn = document.getElementById('startBtn');
+const chicken = document.getElementById("chicken");
+const startBtn = document.getElementById("startBtn");
 
-
-chicken.addEventListener('click', () => {
-chicken.src = 'assets/interactives/screaming_chick.png';
-new Audio('assets/click.mp3').play();
-setTimeout(()=> chicken.src='assets/interactives/normal_chick.png', 200);
+chicken.addEventListener("click", () => {
+  chicken.src = "assets/interactives/screaming_chick.png";
+  chicken.style.transform = "translateY(-3.7px)";
+  new Audio("assets/click.mp3").play();
+  setTimeout(() => {
+    chicken.src = "assets/interactives/normal_chick.png";
+    chicken.style.transform = "translateY(0)"; // return to normal
+  }, 200);
 });
 
-
-startBtn.addEventListener('click', () => {
-location.href = 'fridge.html';
+startBtn.addEventListener("click", () => {
+  location.href = "fridge.html";
 });
-
 
 // ripple
 document.addEventListener("click", (e) => {
