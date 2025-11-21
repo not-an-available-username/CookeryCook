@@ -103,7 +103,8 @@ body {
 
 .main-btn,
 .next-btn,
-.back-btn {
+.back-btn,
+.finish-btn {
   border: none;
   outline: none;
   background: none;
@@ -115,7 +116,8 @@ body {
 
 .main-btn img,
 .next-btn img,
-.back-btn img {
+.back-btn img,
+.finish-btn img {
   display: block;
   width: 200px;
   user-select: none;
@@ -126,14 +128,16 @@ body {
 /* === HOVER: Grow === */
 .main-btn:hover img,
 .next-btn:hover img,
-.back-btn:hover img {
+.back-btn:hover img,
+.finish-btn:hover img {
   transform: scale(1.15);
 }
 
 /* === CLICK (active): Bounce pop === */
 .main-btn:active img,
 .next-btn:active img,
-.back-btn:active img {
+.back-btn:active img,
+.finish-btn:active img {
   animation: btnBounce 0.2s ease;
 }
 
@@ -174,6 +178,12 @@ body {
 .kitchen-screen .back-btn {
   left: 35px;
   bottom: 653px;
+}
+
+.finish-btn {
+  position: absolute;
+  right: 5px;
+  bottom: 575px;
 }
 
 /* Bookmark animation when clicked */
