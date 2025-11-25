@@ -29,11 +29,17 @@ body {
     no-repeat;
 }
 
+.scanner-screen {
+  background: url("../assets/backgrounds/AI_screen.png") center/cover
+    no-repeat;
+}
+
 .start-screen,
 .fridge-screen,
 .recipes-screen,
 .kitchen-screen,
-.final-screen {
+.final-screen,
+.scanner-screen {
   position: absolute;
   top: 0;
   left: 0;
@@ -189,6 +195,11 @@ body {
 .final-screen .back-btn {
   left: 35px;
   bottom: 670px;
+}
+
+.scanner-screen .back-btn {
+  left: 20px;
+  bottom: 40px;
 }
 
 .finish-btn {
@@ -407,7 +418,7 @@ body {
 
 .page-arrow {
   position: absolute;
-  top: 680px;   /* BELOW all 3 previews */
+  top: 680px; /* BELOW all 3 previews */
   width: 120px;
   cursor: pointer;
   user-select: none;
@@ -416,11 +427,11 @@ body {
 
 /* Align horizontally under the preview column */
 #pageLeft {
-  left: 360px;    /* slightly left of preview column */
+  left: 360px; /* slightly left of preview column */
 }
 
 #pageRight {
-  left: 550px;    /* slightly right of preview column */
+  left: 550px; /* slightly right of preview column */
 }
 
 .recipes-list {
@@ -480,11 +491,11 @@ body {
   bottom: 6px;
   left: 1300px;
   transform: translateX(-50%);
-  
+
   /* adjust to match your PNG’s "Next" button location */
-  width: 100px;    
+  width: 100px;
   height: 50px;
-  
+
   background: none;
   border: none;
   cursor: pointer;
@@ -507,15 +518,15 @@ body {
 
 .camera-btn {
   position: absolute;
-  top: 230px;         /* adjust to fit your UI */
-  left: 581px;        /* adjust to your UI */
-  
-  font-size: 70px;    /* icon size */
+  top: 250px;
+  left: 581px;
+
+  font-size: 70px;
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
-  
+
   user-select: none;
   -webkit-user-drag: none;
 
@@ -528,4 +539,46 @@ body {
 
 .camera-btn:active {
   transform: scale(0.9);
+}
+
+#video {
+  width: 500px;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  position: absolute;
+  top: 263px;
+  left: 470px;
+}
+
+#result {
+  color: black;
+  position: absolute;
+  top: 650px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+#progressBar {
+  position: absolute;
+  top: 690px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 18px;
+  background: #222;
+  border: 3px solid #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  image-rendering: pixelated; /* makes edges crisp */
+}
+
+#progressFill {
+  width: 0%;
+  height: 100%;
+  background: #00ff00; /* pixel green */
+  transition: width 0.1s linear;
+  image-rendering: pixelated;
 }

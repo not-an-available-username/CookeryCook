@@ -1,35 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
     <meta charset="UTF-8" />
     <title>CookeryCook - Scan Ingredient</title>
+    <link rel="stylesheet" href="css/styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.21.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
     <script defer src="js/scanner.js"></script>
-
-    <style>
-      body {
-        background: #111;
-        color: white;
-        text-align: center;
-      }
-      #video {
-        width: 300px;
-        border-radius: 10px;
-        display: block;
-        margin: 20px auto;
-      }
-      #result {
-        margin-top: 20px;
-        font-size: 24px;
-      }
-    </style>
   </head>
 
-  <body>
-    <h1>Scan an Ingredient</h1>
+  <body class="scanner-screen">
     <video id="video" autoplay playsinline></video>
     <div id="result">Waiting...</div>
+    <div id="progressBar">
+      <div id="progressFill"></div>
+    </div>
     <button class="back-btn" onclick="location.href='fridge.html'">
       <img src="assets/buttons/back_button.png" />
     </button>

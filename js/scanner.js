@@ -52,22 +52,28 @@ async function predict() {
   document.getElementById("result").textContent =
     `${best.className}: ${Math.round(best.probability * 100)}%`;
 
-  // ----------------------------------------
-  //   STABLE 3-SECOND CONFIRMATION ONLY
-  // ----------------------------------------
+  const fill = document.getElementById("progressFill");
+
   if (best.probability > 0.90) {
     if (stableIngredient !== best.className) {
       stableIngredient = best.className;
       stableStartTime = performance.now();
+      fill.style.width = "0%";
     } else {
       const elapsed = performance.now() - stableStartTime;
+      const progress = Math.min(elapsed / REQUIRED_TIME, 1);
+
+      fill.style.width = (progress * 100) + "%";
+
       if (elapsed >= REQUIRED_TIME) {
+        fill.style.width = "100%";
         addIngredient(stableIngredient);
       }
     }
   } else {
     stableIngredient = null;
     stableStartTime = null;
+    fill.style.width = "0%";
   }
 }
 
@@ -79,8 +85,13 @@ function addIngredient(name) {
     localStorage.setItem("fridgeIngredients", JSON.stringify(stored));
   }
 
-  alert(`${name} added!`);
-  window.location.href = "fridge.html";
+  const result = document.getElementById("result");
+  result.textContent = `${name} added!`;
+  result.style.color = "#00ff00";
+
+  setTimeout(() => {
+    window.location.href = "fridge.html";
+  }, 1500); 
 }
 
 init();
