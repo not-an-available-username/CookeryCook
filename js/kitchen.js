@@ -35,7 +35,7 @@ const animations = {
 
   caesar_salad: ["chopping", "mixing", "mixing", "serve"],
 
-  tomato_soup: ["chopping", "frying_vegetable", "boiling", "mixing"],
+  tomato_soup: ["chopping", "frying_vegetable", "frying_vegetable", "boiling", "mixing"],
 
   grilled_salmon: ["add_spice", "frying_meat", "frying_meat", "serve"],
 
