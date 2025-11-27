@@ -44,12 +44,12 @@ body {
   top: 0;
   left: 0;
 
-  width: 1440px; /* fixed game resolution */
+  width: 1440px; 
   height: 765px;
 
   background-repeat: no-repeat;
   background-position: top left;
-  background-size: 1440px 765px; /* never scale */
+  background-size: 1440px 765px; 
 
   overflow: hidden;
 }
@@ -59,7 +59,7 @@ body {
   top: 0;
   left: 0;
 
-  width: 1440px; /* your fixed resolution */
+  width: 1440px; 
   height: 765px;
 
   background: url("../assets/backgrounds/recipes_screen.png") top left no-repeat;
@@ -68,7 +68,7 @@ body {
   background-size: 1440px 765px;
 
   transition: filter 1.2s ease;
-  z-index: -1; /* push behind everything */
+  z-index: -1; 
 }
 
 .bg-layer.blurred {
@@ -230,19 +230,16 @@ body {
   transition: filter 1.2s ease;
 }
 
-/* Body transitions for background + blur */
 body {
   transition: background-image 0.8s ease, filter 1.2s ease;
 }
 
-/* Wrap that holds everything and can be blurred smoothly */
 #screenWrap {
   width: 1440px;
   height: 765px;
   transition: filter 1s ease;
 }
 
-/* When blur is active */
 #screenWrap.screen-blur {
   filter: blur(5px);
 }
@@ -251,8 +248,8 @@ body {
   position: absolute;
   top: 190px;
   left: 265px;
-  width: 320px; /* adjust to your PNG width */
-  height: 80px; /* adjust to your PNG height */
+  width: 320px; 
+  height: 80px; 
   background: url("../assets/buttons/search_bar.png") no-repeat center/contain;
 }
 
@@ -261,7 +258,7 @@ body {
   top: 50%;
   left: 20px;
   transform: translateY(-50%);
-  width: 220px; /* adjust width inside the PNG */
+  width: 220px;
   height: 40px;
   font-size: 20px;
   border: none;
@@ -325,14 +322,14 @@ body {
 /* FRIDGE INGREDIENT GRID (4 per row) */
 #ingredientList {
   position: absolute;
-  right: 575px; /* ← change this to move entire grid horizontally */
-  top: 240px; /* ← change this to move entire grid vertically */
+  right: 575px; 
+  top: 240px; 
 
-  width: 70px; /* ← you can adjust if PNGs are bigger/smaller */
+  width: 70px; 
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* ← 4 items per row */
-  column-gap: 10px; /* space between items */
+  grid-template-columns: repeat(4, 1fr); 
+  column-gap: 10px; 
   row-gap: 35px;
   padding: 10px;
 }
@@ -342,12 +339,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90px; /* adjust based on your PNG sizes */
+  width: 90px; 
 }
 
 /* Ingredient PNG */
 .ingredient-item img {
-  width: 70px; /* PNG size — change here */
+  width: 70px;
   height: auto;
 }
 
@@ -418,20 +415,19 @@ body {
 
 .page-arrow {
   position: absolute;
-  top: 680px; /* BELOW all 3 previews */
+  top: 680px; 
   width: 120px;
   cursor: pointer;
   user-select: none;
   transform: translateY(-50%);
 }
 
-/* Align horizontally under the preview column */
 #pageLeft {
-  left: 360px; /* slightly left of preview column */
+  left: 360px; 
 }
 
 #pageRight {
-  left: 550px; /* slightly right of preview column */
+  left: 550px; 
 }
 
 .recipes-list {
@@ -492,7 +488,6 @@ body {
   left: 1300px;
   transform: translateX(-50%);
 
-  /* adjust to match your PNG’s "Next" button location */
   width: 100px;
   height: 50px;
 
@@ -518,10 +513,9 @@ body {
 
 .camera-btn {
   position: absolute;
-  top: 250px;
-  left: 581px;
+  top: 270px;
+  left: 591px;
 
-  font-size: 70px;
   background: none;
   border: none;
   padding: 0;
@@ -531,6 +525,12 @@ body {
   -webkit-user-drag: none;
 
   transition: transform 0.2s ease;
+}
+
+.camera-btn img {
+  width: 75px;
+  height: auto;
+  object-fit: contain;
 }
 
 .camera-btn:hover {
