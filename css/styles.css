@@ -189,7 +189,7 @@ body {
 
 .kitchen-screen .back-btn {
   left: 35px;
-  bottom: 653px;
+  bottom: 673px;
 }
 
 .final-screen .back-btn {
@@ -572,13 +572,24 @@ body {
   border: 3px solid #fff;
   border-radius: 4px;
   overflow: hidden;
-  image-rendering: pixelated; /* makes edges crisp */
+  image-rendering: pixelated;
 }
 
 #progressFill {
   width: 0%;
   height: 100%;
-  background: #00ff00; /* pixel green */
+  background: #00ff00; 
   transition: width 0.1s linear;
   image-rendering: pixelated;
+}
+
+.kitchen-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 765px;
+  object-fit: cover;
+  pointer-events: none; 
+  z-index: -1; 
 }
