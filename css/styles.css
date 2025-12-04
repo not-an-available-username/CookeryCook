@@ -475,7 +475,7 @@ body {
 
 .step-image {
   position: absolute;
-  bottom: 6px;
+  bottom: -14.5px;
   left: 785px;
   transform: translateX(-50%);
   width: 1210px;
