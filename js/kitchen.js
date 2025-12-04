@@ -1,7 +1,7 @@
 const animations = {
   spaghetti_carbonara: [
-    "boiling_spaghetti",
-    "frying",
+    "boiling_pasta",
+    "frying_meat",
     "mixing_eggs",
     "mixing",
     "add_spice",
@@ -60,7 +60,6 @@ const animations = {
 const recipeId = localStorage.getItem("currentRecipe");
 let step = 1;
 
-const recipeFull = document.getElementById("recipeFull");
 const stepImage = document.getElementById("stepImage");
 const stepNext = document.getElementById("stepNext");
 
