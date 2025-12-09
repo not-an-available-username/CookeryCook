@@ -137,24 +137,31 @@ screenshotBtn.addEventListener('click', async () => {
 
 // Show confirmation for detected ingredient
 function showConfirmation(ingredient) {
-  resultDiv.innerHTML = `Add "${ingredient}"? <button id="yesBtn">Yes</button> <button id="noBtn">No</button>`;
+  resultDiv.innerHTML = `
+    Add "${ingredient}"?<br>
+    <img id="yesBtn" class="yes-btn" src="assets/buttons/yes_button.png" alt="Yes">
+    <img id="noBtn" class="no-btn" src="assets/buttons/no_button.png" alt="No">
+  `;
 
-  document.getElementById("yesBtn").addEventListener('click', () => {
+  document.getElementById("yesBtn").addEventListener("click", () => {
     addIngredient(ingredient);
   });
 
-  document.getElementById("noBtn").addEventListener('click', () => {
+  document.getElementById("noBtn").addEventListener("click", () => {
     resumeVideo();
   });
 }
 
-// Show no ingredient detected
 function showNoIngredient() {
-  resultDiv.innerHTML = `No ingredients detected. Take another picture? <button id="okBtn">OK</button>`;
-  document.getElementById("okBtn").addEventListener('click', () => {
+  resultDiv.innerHTML = `
+    No ingredients detected.<br>Take another picture?<br>
+    <img id="okBtn" class="ok-btn" src="assets/buttons/ok_button.png" alt="OK">
+  `;
+  document.getElementById("okBtn").addEventListener("click", () => {
     resumeVideo();
   });
 }
+
 
 // Resume video and detection
 function resumeVideo() {

@@ -623,6 +623,37 @@ body {
   transform: scale(0.9);
 }
 
+#result img.ok-btn {
+  width: 150px;
+  position: absolute;
+  right: -120px;
+  bottom: -10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s;
+}
+
+#result img.yes-btn {
+  width: 150px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 0.2s ease, opacity 0.2s;
+}
+
+#result img.no-btn {
+  width: 150px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 0.2s ease, opacity 0.2s;
+}
+
+#result img.ok-btn:hover,
+#result img.yes-btn:hover,
+#result img.no-btn:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
 
 .kitchen-animation {
   position: absolute;
